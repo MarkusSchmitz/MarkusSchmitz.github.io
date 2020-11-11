@@ -1,0 +1,27 @@
+h1 {
+    font-size: large;
+}
+
+button {
+    color: honeydew;
+    margin: 10px;
+}
+
+button:hover {
+    color: gray;
+    margin: 10px;
+}
+
+.different {
+    background-color: aliceblue;
+    margin-left: 20px;
+    color: gray;
+}
+
+.imageBox {
+    align-content: center;
+    margin: auto;
+    background-color: lightgray;
+    
+}
+  
