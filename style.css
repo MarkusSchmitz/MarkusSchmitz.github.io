@@ -9,7 +9,68 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("ressources/headimage_anim.gif");
 
   /* Set a specific height */
-  height: 100vh;
+  min-height: 100vh;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  margin-bottom: none;
+}
+
+.hero-image2 {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("ressources/hero2.jpg");
+
+  /* Set a specific height */
+  min-height: 100vh;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.hero-image3 {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("ressources/hero3.jpg");
+
+  /* Set a specific height */
+  min-height: 100vh;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.hero-image4 {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("ressources/hero4.jpg");
+
+  /* Set a specific height */
+  min-height: 100vh;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.hero-image5 {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("ressources/hero5.jpg");
+
+  /* Set a specific height */
+  min-height: 100vh;
 
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
@@ -27,4 +88,44 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+}
+
+.titleText {
+  text-align: left;
+  margin: auto;
+  z-index: 1010;
+  color: white;
+}
+
+.titleBar{
+  background-color: rgba(255, 161, 124, 0.753);
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  z-index: 1010;
+  color: white;
+  text-align: center;
+}
+
+.scrollDown {
+  color: white;
+  text-align: center;
+  margin-bottom: auto;
+  padding-top: 13em;
+}
+
+.heroRow {
+  min-height: inherit;
+}
+
+h3 {
+  color: mediumaquamarine;
+}
+
+h1 {
+  color: white;
+}
+
+.prog {
+  background-color: mediumaquamarine;
 }
