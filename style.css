@@ -6,7 +6,7 @@ body {
 /* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("ressources/headimage_anim.gif");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("ressources/hero1.jpg");
 
   /* Set a specific height */
   min-height: 100vh;
@@ -91,9 +91,6 @@ body {
 }
 
 .titleText {
-  text-align: left;
-  margin: auto;
-  z-index: 1010;
   color: white;
 }
 
