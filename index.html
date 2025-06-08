@@ -1,532 +1,354 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Markus Schmitz</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Markus Walk - Senior Advisory Generative AI Architect</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* --- Base Screen Styles --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            background-image: radial-gradient(#dee2e6 0.5px, transparent 0.5px);
+            background-size: 15px 15px;
+        }
+        .rainbow-highlight {
+            background: linear-gradient(90deg, #845EC2, #D65DB1, #FF9671, #FFC75F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .rainbow-border {
+            padding: 2px;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #845EC2, #D65DB1, #FFC75F, #00C9A7);
+        }
+        .bento-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+            transition: all 0.3s ease-in-out;
+        }
+        .bento-item:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transform: translateY(-0.25rem);
+        }
 
-    <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+        /* --- Print-Only & Screen-Only Helper Classes --- */
+        .print-only { display: block; }
+        .screen-only { display: block; }
 
-  <!-- Navigation Bar -->
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <!-- Nav Links -->
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#Start"><h2>Start</h2></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#About"><h2>About</h2></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#Experience"><h2>Experience</h2></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#Skills"><h2>Skills</h2></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#Hobbies"><h2>Hobbies</h2></a>
-      </li>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+        /* --- Print Styles --- */
+        @media print {
+            .rainbow-border, .rainbow-highlight {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
 
-<main role="main">
+    <div class="container mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+        
+        <!-- Header -->
+        <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12">
+            <div class="flex items-center space-x-5 header-info-wrapper">
+                <div class="rainbow-border">
+                    <img src="https://media.licdn.com/dms/image/v2/C5603AQFcTLmEH5IGMg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1661946463966?e=2147483647&v=beta&t=QMXhoBbcqcPaMiZrpjMW-DhD9faqdbHtR2ughHyEnmE" alt="Markus Walk" class="rounded-full w-20 h-20 bg-white object-cover"/>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Dr. Markus Walk (Schmitz)</h1>
+                    <p class="text-lg text-gray-600">Senior Advisory <span class="rainbow-highlight font-medium">Generative AI</span> Architect</p>
+                </div>
+            </div>
+            <div class="screen-only flex items-center space-x-4 mt-6 sm:mt-0 text-gray-500">
+                 <a href="mailto:markus.schmitz@fau.de" class="hover:text-purple-600 transition-colors" aria-label="Email">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                 </a>
+                 <a href="https://github.com/MarkusSchmitz" target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 transition-colors" aria-label="GitHub">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4 -4.3-2.5 -6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+                 </a>
+                 <a href="https://www.linkedin.com/in/markus-schmitz-a82498147/" target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 transition-colors" aria-label="LinkedIn">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                 </a>
+                 <a href="https://markusschmitz.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 transition-colors" aria-label="Website">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                 </a>
+            </div>
+             <!-- Contact Info for Print -->
+            <div class="print-only text-center text-sm mt-4 print-contact-info">
+                <a href="mailto:markus.schmitz@fau.de">markus.schmitz@fau.de</a> &bull; 
+                <a href="https://www.linkedin.com/in/markus-schmitz-a82498147/">LinkedIn</a> &bull; 
+                <a href="https://github.com/MarkusSchmitz">GitHub</a> &bull; 
+                <a href="https://markusschmitz.github.io">Portfolio</a>
+            </div>
+        </header>
 
-  <!-- jumbotron element for full page image -->
-  <!-- full page and background image adjusted in style.css -->
-  <div id="Start" class="jumbotron hero-image">
-        <div class="row heroRow align-items-center justify-content-center">
-          <div class="col-lg-4 titleText align-middle justify-content-center">
-            <p>Hi, I'm</p>
-            <h1><b>Markus Schmitz</b></h1>
-          </br>
-            <h4>Occupation = AI Architect</h4>
-            <h4>Method = Design Science / Applied Research</h4>
-            <h4>Research = Artificial Intelligence</h4>
-            <h4>Location = Heidelberg.IBM </br> Nuremberg.FAU</h4>
+        <!-- Main Grid -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <div class="bento-item lg:col-span-3">
+                <h2 class="text-xl font-bold mb-4 flex items-center text-purple-600">
+                    <span class="mr-3 screen-only"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></span>
+                    Professional Summary
+                </h2>
+                <p class="text-gray-600 leading-relaxed">A results-oriented Generative AI Architect with a Ph.D. in Information Systems and AI (Summa Cum Laude). Extensive experience researching & applying all kinds of AI to solve complex industrial challenges. Proven ability to lead innovation projects from concept to deployment, translating technical capabilities into strategic business value for enterprise clients. A public speaker and lecturer with a passion for research, development, and mentoring in the field of AI.</p>
+            </div>
+
+            <div class="bento-item lg:col-span-3">
+                <h2 class="text-xl font-bold mb-4 flex items-center text-blue-600">
+                    <span class="mr-3 screen-only"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg></span>
+                    Recent Experience
+                </h2>
+                <div id="experience-section" class="space-y-4">
+                    <!-- Experience Items will be populated by script -->
+                </div>
+
+                <!-- Add some vertical space-->
+                <div class="my-8"></div>
+                <div class="my-8"></div>
+               
+            </div>
+
+            <!-- Earlier Experience Section -->
+            <div class="bento-item lg:col-span-3">
+                
+                <h2 class="text-xl font-bold mb-4 flex items-center text-blue-600">
+                    <span class="mr-3 screen-only"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg></span>
+                    Earlier Experience
+                </h2>
+                <div id="experience-section-2" class="space-y-4">
+                    <!-- Earlier Experience Items will be populated by script -->
+                </div>
+            </div>
+
+            <div class="bento-item lg:col-span-2 screen-only">
+                <h2 class="text-xl font-bold mb-4 flex items-center text-indigo-600">
+                    <span class="mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span>
+                    Technical Competencies
+                </h2>
+                <div id="skills-chart-technical" class="h-32"></div>
+            </div>
+            <div class="bento-item screen-only">
+                <h2 class="text-xl font-bold mb-4 flex items-center text-rose-600">
+                    <span class="mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                    Coding Languages
+                </h2>
+                <div id="skills-chart-coding" class="h-32"></div>
+                <div class="my-8"></div>
+                <div class="my-8"></div>
+                <div class="my-8"></div>
+            </div>
+
 
             
-        </div>
-        <div class="col-lg-4 titleBar align-middle">
-          <img src="ressources/me_2024.png" style="max-width:250px" alt="..." class="img-fluid rounded mt-5">
-          <h1 class="mt-5">Markus Schmitz</h1>
-          <h4>B.Sc. in Economics</h4>
-          <h4>M.Sc. in Int. Information Systems</h4>
-          <h4>Ph.D in Information Systems /AI</h4>
-          </br>
-          <h6>markus.schmitz@fau.de</h6>
-          <h3><a></a></h3>
+            <div class="bento-item lg:col-span-3">
+                <h2 class="text-xl font-bold mb-4 flex items-center text-green-600">
+                     <span class="mr-3 screen-only"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"></path></svg></span>
+                     Education
+                </h2>
+                <div id="education-section" class="space-y-4">
+                    <!-- Education Items will be populated by script -->
+                </div>
+            </div>
 
-
-        </div>
-        
-        
-        
+            <div class="bento-item lg:col-span-3">
+                 <h2 class="text-xl font-bold mb-4 flex items-center text-amber-600">
+                    <span class="mr-3 screen-only"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></span>
+                    Certifications & Awards
+                </h2>
+                <ul id="awards-list" class="space-y-3 text-sm text-gray-700 list-disc list-inside">
+                    <!-- Awards will be populated by script -->
+                </ul>
+            </div>
+            
+            <div class="bento-item lg:col-span-3">
+                <h2 class="text-xl font-bold mb-4 flex items-center text-teal-600">
+                    <span class="mr-3 screen-only"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span>
+                    Key Publications
+                </h2>
+                <div id="publications-list" class="space-y-3 text-sm text-gray-700 list-disc list-inside">
+                    <!-- Publication Items will be populated by script -->
+                </div>
+            </div>
+        </main>
     </div>
-      </div>
 
-      <div id="About" class="jumbotron hero-image2">
-        <div class="row heroRow align-items-center text-light">
-          <div class= "col-8 mx-auto" data-aos="fade-right" data-aos-duration="3000">
-            <h1>About</h1>
-            <h3>My Keiro(径路)</h3>
-            <h6>I am a technology enthusiast. I am always improving. I never settle.
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Data ---
+            const experienceData = [ { company: "IBM", title: "Senior Advisory GenAI Architect / Senior Managing Consultant", period: "Feb 2024 – Present", iconBg: "bg-blue-100", iconColor: "text-blue-600", description: "Advising clients and leading teams to envision and build value-driven solutions with Generative AI.", achievements: [ "Led technical strategy and architecture for projects exceeding €2M in volume.", "Initiated pilot projects for major clients like Porsche, Douglas, and BMF.", "Lead applied research projects and mentor teams of solution experts." ] }, 
+            { company: "Friedrich-Alexander University", title: "Lecturer for Information Systems", period: "Mar 2021 – Present", iconBg: "bg-green-100", iconColor: "text-green-600", description: "Teaching courses on Machine Learning for Business and IT-Management.", achievements: [ "Courses are consistently among the most popular offered by the chair.", "Achieved generally high scores on official course evaluations." ] }, 
+            { company: "Aleph Alpha", title: "Senior Team Lead, Customer Innovation Lab", period: "Aug 2023 – Jan 2024", iconBg: "bg-purple-100", iconColor: "text-purple-600", description: "Led a group of solution experts in applied research, prototyping, and high-impact customer projects.", achievements: [ "Played a major role in the €500M+ funding round.", "Championed a PoC with a German automotive OEM, leading to a €2M follow-up project.", "Designed and organized joint keynotes with Bosch, SAP, HPE, and Schwarz Group." ] }, 
+            { company: "Aleph Alpha", title: "AI Innovation and Solution Lead", period: "Feb 2022 – Aug 2023", iconBg: "bg-purple-100", iconColor: "text-purple-600", description: "Consulted on external AI projects and led high-impact initiatives across multiple industries.", achievements: [ "Enabled and trained strategic partners on the use of Generative AI.", "Developed a PoC with BMW presented to the executive board, leading to a significant follow-up project.", "Championed projects and evaluations with key customers resulting in multi-million euro deals." ] }, 
+            { company: "BMW Group", title: "Project Manager & Researcher, AI/ML", period: "Mar 2021 – Dec 2022", iconBg: "bg-red-100", iconColor: "text-gray-600", description: "Provided group-wide consulting for ML applications and managed cloud resources (Azure/AWS).", achievements: [ "Developed AI automation guidelines for the entire production and logistics value chain.", "Led an AI 'Task-Force' to develop a critical CV-based fault detection system in under 6 days.", "Championed an AutoML platform evaluation for automating small ML projects." ] },
+            { company: "BMW Group", title: "PhD Candidate & Researcher", period: "Mar 2018 – Mar 2021", iconBg: "bg-red-100", iconColor: "text-gray-600", description: "Researched and developed AI solutions and their integration for the automotive industry.", achievements: [ "Developed a deep reinforcement learning framework for robotic assembly.", "Served as SME for some of BMW's most advanced AI projects." ] }  ];
+            // Split experienceData into two sections
+            const splitIndex = experienceData.findIndex(exp => exp.title === "AI Innovation and Solution Lead" && exp.company === "Aleph Alpha");
+            const experienceDataFirst = experienceData.slice(0, splitIndex);
+            const experienceDataSecond = experienceData.slice(splitIndex);
+            const skillsData = { technical: [ 
+                { skill: "ML/AI/GenAI R&D", proficiency: 95 }, 
+                { skill: "AI Strategy", proficiency: 90 }, 
+                { skill: "IT / Solution Arch.", proficiency: 80 }, 
+                { skill: "Project Management", proficiency: 90 },
+                { skill: "Cloud (Azure/AWS/IBM)", proficiency: 75 }, 
+                { skill: "People Leadership", proficiency: 85 } ], 
+                
+                coding: [ 
+                { skill: "Python", proficiency: 95 }, 
+                { skill: "JavaScript", proficiency: 80 }, 
+                { skill: "C#", proficiency: 60}, 
+                { skill: "Java", proficiency: 50 } ] };
+            const educationData = [ { degree: "PhD Student Information Systems (Summa Cum Laude)", institution: "Friedrich-Alexander University", period: "May 2018 – Nov 2021" }, { degree: "Master International Information Systems", institution: "Friedrich-Alexander University", period: "Oct 2015 – Apr 2018" }, { degree: "Bachelor Economics", institution: "Friedrich-Alexander University", period: "Oct 2011 – Feb 2015" } ];
+            const awardsData = ["Dissertation Award Hermann Gutmann Stiftung", "IBM Certified Expert Architect", "Deep Reinforcement Learning Nanodegree (Udacity)", "Professional Scrum Master (Scrum.org)"];
+            const publicationsData = [
+                { title: "Enabling of predictive maintenance in the brownfield through low-cost sensors, an IIoT-architecture and machine learning", authors: "P Strauß, M Schmitz, R Wöstmann, J Deuse", venue: "2018 IEEE International conference on big data (big data), 1474-1483", year: 2018, url: "https://ieeexplore.ieee.org/document/9006289" },
+                { title: "Deep reinforcement learning for robotic control in high-dexterity assembly tasks—a reward curriculum approach", authors: "L Leyendecker, M Schmitz, HA Zhou, V Samsonov, M Rittstieg, D Lütticke", venue: "International Journal of Semantic Computing 16 (03), 381-402", year: 2022, url: "https://www.worldscientific.com/doi/10.1142/S1793351X22400185" },
+                { title: "Towards real-world force-sensitive robotic assembly through deep reinforcement learning in simulations", authors: "M Hebecker, J Lambrecht, M Schmitz", venue: "2021 IEEE/ASME International Conference on Advanced Intelligent Mechatronics", year: 2021, url: "https://ieeexplore.ieee.org/document/8801736" },
+                { title: "Enabling Rewards for Reinforcement Learning in Laser Beam Welding processes through Deep Learning", authors: "M Schmitz, F Pinsker, A Ruhri, B Jiang, G Safronov", venue: "2020 19th IEEE International Conference on Machine Learning and Applications", year: 2020, url: "https://ieeexplore.ieee.org/document/9369952" },
+                { title: "Verifying the applicability of synthetic image generation for object detection in industrial quality inspection", authors: "M Shirazi, M Schmitz, S Janssen, A Thies, G Safronov, A Rizk, P Mayr, ...", venue: "2021 20th IEEE International Conference on Machine Learning and Applications", year: 2021, url: "https://ieeexplore.ieee.org/document/9668662" },
+                { title: "Machine Learning in Industrial Applications: Insights Gained from Selected Studies", authors: "M Schmitz", venue: "Dissertation, Erlangen, Friedrich-Alexander-Universität Erlangen-Nürnberg", year: 2022, url: "https://d-nb.info/1253303681/34" },
+                { title: "Toward fault detection in industrial welding processes with deep learning and data augmentation", authors: "J Antony, F Schlather, G Safronov, M Schmitz, K Van Laerhoven", venue: "arXiv preprint arXiv:2106.10160", year: 2021, url: "https://arxiv.org/abs/2106.10160" },
+                { title: "An Application-centric Perspective on Industrial Artificial Intelligence", authors: "M Schmitz, D Yesilbas", venue: "AMCIS 2022 Proceedings 11, 11", year: 2022, url: "https://aisel.aisnet.org/amcis2022/sig_ai/sig_ai/5/" }
+            ];
+            
+            // --- Bar Chart Function (for screen) ---
+            function drawBarChart(selector, data, color) {
+                const container = d3.select(selector);
+                if (container.empty()) return;
+                const draw = () => {
+                    container.select("svg").remove();
+                    const margin = { top: 5, right: 20, bottom: 5, left: 120 };
+                    const bounds = container.node().getBoundingClientRect();
+                    const width = bounds.width - margin.left - margin.right;
+                    const height = bounds.height - margin.top - margin.bottom;
+                    if (width <= 0 || height <= 0) return;
+                    const svg = container.append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+                    const y = d3.scaleBand().range([0, height]).domain(data.map(d => d.skill)).padding(0.12);
+                    svg.append("g").call(d3.axisLeft(y).tickSize(0)).select(".domain").remove();
+                    svg.selectAll(".tick text").style("font-size", "11px").style("fill", "#4A5568");
+                    const x = d3.scaleLinear().domain([0, 100]).range([0, width]);
+                    svg.selectAll("myRect").data(data).enter().append("rect").attr("y", d => y(d.skill)).attr("width", 0).attr("height", Math.min(12, y.bandwidth()))
+                        .attr("fill", color).attr("rx", 3).transition().duration(800).delay((d, i) => i * 100).attr("width", d => x(d.proficiency));
+                    svg.selectAll(".bar-label").data(data).enter().append("text").attr("class", "bar-label").attr("y", d => y(d.skill) + Math.min(12, y.bandwidth()) / 2).attr("dy", "0.35em").attr("x", d => x(d.proficiency) + 5).text(d => `${d.proficiency}%`).style("font-size", "10px").style("fill", "#4A5568").style("opacity", 0).transition().duration(800).delay((d, i) => i * 100 + 500).style("opacity", 1);
+                };
+                draw();
+                new ResizeObserver(draw).observe(container.node());
+            }
 
-              Since I entered university I have strived to fulfill my ideals of research, friendship and how I can be a valuable part of this world. 
-              This is why I never settle for what I have achieved, but always seek to improve myself and spread enthusiasm for technology wherever I go.</h6>
-          
-          </div>
-          
+            // --- Populate Dynamic Content ---
+            const expContainer1 = document.getElementById('experience-section');
+            const expContainer2 = document.getElementById('experience-section-2');
+            const expIconMapping = { 'IBM': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>', 'Aleph Alpha': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>', 'BMW Group': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>', 'Friedrich-Alexander University': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"></path></svg>' };
+            if (expContainer1) expContainer1.innerHTML = experienceDataFirst.map(exp => `
+                <div class="experience-item">
+                    <div class="flex items-start">
+                        <div class="experience-icon-wrapper w-10 h-10 flex-shrink-0 rounded-lg ${exp.iconBg} ${exp.iconColor} flex items-center justify-center text-2xl mr-4">
+                            ${expIconMapping[exp.company] || ''}
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-gray-900">${exp.title}</h3>
+                            <p class="text-sm text-gray-500">${exp.company} &bull; ${exp.period}</p>
+                            <div class="pt-3">
+                                <p class="text-sm text-gray-600 mb-2">${exp.description}</p>
+                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+                                    ${exp.achievements.map(ach => `<li>${ach}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            if (expContainer2) expContainer2.innerHTML = experienceDataSecond.map(exp => `
+                <div class="experience-item">
+                    <div class="flex items-start">
+                        <div class="experience-icon-wrapper w-10 h-10 flex-shrink-0 rounded-lg ${exp.iconBg} ${exp.iconColor} flex items-center justify-center text-2xl mr-4">
+                            ${expIconMapping[exp.company] || ''}
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-gray-900">${exp.title}</h3>
+                            <p class="text-sm text-gray-500">${exp.company} &bull; ${exp.period}</p>
+                            <div class="pt-3">
+                                <p class="text-sm text-gray-600 mb-2">${exp.description}</p>
+                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+                                    ${exp.achievements.map(ach => `<li>${ach}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            const eduContainer = document.getElementById('education-section');
+            if (eduContainer) eduContainer.innerHTML = educationData.map(edu => `
+                <div>
+                    <h3 class="font-semibold text-gray-800">${edu.degree}</h3>
+                    <p class="text-sm text-gray-500">${edu.institution} &bull; ${edu.period}</p>
+                </div>
+            `).join('');
 
-          
-        </div>
-      </div>
+            const awardsContainer = document.getElementById('awards-list');
+            if(awardsContainer) awardsContainer.innerHTML = awardsData.map(awd => `<li>${awd}</li>`).join('');
 
+            const pubContainer = document.getElementById('publications-list');
+            if (pubContainer) {
+                pubContainer.innerHTML = `
+                <div class="mb-2">
+                    <a href="https://scholar.google.com/citations?user=6JSkREsAAAAJ&hl=de" target="_blank" rel="noopener noreferrer" class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 font-medium mb-2">View all on Google Scholar</a>
+                </div>
+                <div class="overflow-x-auto">
+                <table class="min-w-full text-sm border border-gray-200 rounded">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-2 py-1 text-left font-semibold">Title</th>
+                            <th class="px-2 py-1 text-left font-semibold">Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${publicationsData.map(pub => `
+                            <tr>
+                                <td class="px-2 py-1 align-top">
+                                    <a href="${pub.url}" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:underline font-medium">${pub.title}</a><br/>
+                                    <span class="text-xs text-gray-500">${pub.authors}</span><br/>
+                                    <span class="text-xs text-gray-400">${pub.venue}</span>
+                                </td>
+                                <td class="px-2 py-1 align-top">${pub.year}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                </div>
+                `;
+            }
 
-      <div id="Experience" class="jumbotron hero-image3">
-        <div class="row heroRow align-items-center text-light">
-          <div class= "col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
-            <h1>Education</h1>
-            <h2>What I've learned</h2>
-            </br>
-            <h3>Friedrich-Alexander University – Erlangen</h3>
-            <p>Phd Student at Chair of IT-Management</p>
-            <p>Prof. Dr. Michael Amberg</p>
-            <p>2018-2021</p>
-            </br>
-            <h3>Friedrich-Alexander University – Erlangen</h3>
-            <p>Master of Science in International Information Systems</p>
-            <p>Focus: Software Product Management & Data</p>
-            <p>2015-2018</p>
-            </br>
-            <h3>Kwansei Gakuin University, Osaka, Japan</h3>
-            <p>Study abroad</p>
-            <p>Focus: Innovation and International Business</p>
-            <p>2017</p>
-            </br>
-            <h3>Friedrich-Alexander University – Erlangen</h3>
-            <p>Bachelor of Arts in Economics</p>
-            <p>Focus: Technology & Innovation</p>
-            <p>2011-2015</p>
+            const printSkillsContainer = document.getElementById('print-skills-section');
+            if (printSkillsContainer) {
+                const allSkills = [...skillsData.technical.map(s => s.skill), ...skillsData.coding.map(s => s.skill)];
+                printSkillsContainer.innerHTML = `<ul>${allSkills.map(s => `<li>${s}</li>`).join('')}</ul>`;
+            }
 
-          </div>
-
-          <div class= "col-md-4 mx-auto" data-aos="fade-left" data-aos-duration="3000">
-            <h1>Experience</h1>
-            <h2>Where I've worked</h2>
-            </br>
-            <h3>IBM</h3>
-            <p>Senior Advisory Architect GenAI</p>
-            <p>Adisory of GenAI Projects and POCs, Public Speaking, Applied Research</p>
-            <p>2024-present</p>
-            </br>
-            <h3>Aleph Alpha GmbH</h3>
-            <p>Senior Team Lead Customer Innovation Lab</p>
-            <p>People Management, Applied Research, Project Management, GenAI development</p>
-            <p>2023-2024</p>
-            </br>
-            <h3>Aleph Alpha GmbH</h3>
-            <p>Aleph Alpha GmbH</p>
-            <p>Applied Research, Project Management, GenAI development</p>
-            <p>2022-2023</p>
-            </br>
-            <h3>BMW Group Munich</h3>
-            <p>Specialist and Consultant for AI and ML</p>
-            <p>Design, Consulting, and Implementation of Machine Learning Applications</p>
-            <p>2021-present</p>
-            </br>
-            <h3>BMW Group Munich</h3>
-            <p>PhD Student in Innovation and Machine Learning</p>
-            <p>Design and Implementation of Machine Learning Applications</p>
-            <p>2018-2021</p>
-            </br>
-            <h3>BMW Group Munich</h3>
-            <p>Master Thesis</p>
-            <p>Unsupervised and Semisupervised Machine Learning for Predictive Maintenance</p>
-            <p>2017-2018</p>
-            </br>
-            <h3>Friedrich-Alexander University – Erlangen</h3>
-            <p>Student Researcher</p>
-            <p>Big Data, Analytics, Project Management</p>
-            <p>2017</p>
-            </br>
-            <h3>Immowelt AG</h3>
-            <p>Student Worker</p>
-            <p>SEO and Product Management</p>
-            <p>2011-2015</p>
-
-          </div>
-        </div>
-      </div>
-
-      <div id="Skills" class="jumbotron hero-image4">
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class="col-12">
-            <h1>Skills and Languages</h1>
-        </div>
-        <div class="col-12">
-          <h3>What I bring to the table</h3>
-        </br>
-          <h3>Technological Skills</h3>
-
-      </div>
-        </div>
-      </br>
-      <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-        
-        <div class= "col-sm-4">
-          <h4>Generative AI</h4>
-        </div>
-        <div class= "col-6">
-          <div class="progress">
-            <div class="progress-bar prog" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-      </br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>General Machine Learning</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 87%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>Deep Reinforcement Learning</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>Computer Vision</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>Data Analytics</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>Cloud Computing (Azure & AWS)</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-6">
-          <h3>Management Skills</h3>
-          <br>
-          </div>
-        </div>
-        
-
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>Agile Project Management</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>Scientific Research</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>University Teaching</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>Software Architecture</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-
-
-
-
-
-
-
-
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-
-        </br>
-          <h3>Languages</h3>
-
-      </div>
-
-      </br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>German</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 99%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>English</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>Japanese</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>French</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>Python</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>Javascript</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>Java</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 65%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>C#</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          
-          <div class= "col-sm-4">
-            <h4>SQL</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row align-items-center text-light" data-aos="fade-left" data-aos-duration="3000">
-          <div class= "col-sm-4">
-            <h4>PHP</h4>
-          </div>
-          <div class= "col-6">
-            <div class="progress">
-              <div class="progress-bar prog" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-        <br>
-        
-
-
-
-
-      </div>
-
-
-      <div id="Hobbies" class="jumbotron hero-image5">
-        <div class="row heroRow align-items-center text-light">
-          <div class= "col-8 mx-auto" data-aos="fade-right" data-aos-duration="3000">
-            <h1>What I do for fun</h1>
-            <h3>Coding</h3>
-            <h3>Pen & Paper</h3>
-            <h3>Yoga</h3>
-            <h3>Ethics & Philosophy</h3>
-            <h3>Learning Japanese</h3>
-            <h3>Hiking</h3>
-            <h3>Volleyball</h3>
-            <h3>Nature and Flowers</h3>
-          </div>
-          
-
-          
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-      
-
-</main>
-
-<footer class="container">
-  <p>&copy; Markus Schmitz 2024</p>
-</footer>
-
-<!-- All kinds of Scripts -->
-
-<!-- Load JQuery and bootstrap scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="bootstrap/js/vendor/jquery.slim.min.js"><\/script>')</script>
-<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- AOS script for animations -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script> AOS.init()</script>
-
-
-<!-- Custom script for caclulating sum -->
-
-<script>
-  // calculate function
-  function calculate() {
-
-    // Get the values of both inputs
-    var first = parseInt(document.getElementById("first").value);
-    var second = parseInt(document.getElementById("second").value);
-
-    // Check if inouts are numbers, if so, output result, if not output warning
-    if (isNaN(first) || isNaN(second)){
-      document.getElementById("result").innerHTML = "One of your inputs is not a number";
-    } 
-    else {
-      document.getElementById("result").innerHTML = first + second;
-    }
-      
-  }
-</script>
-
-
-<script>
-  // Define an Event if button is clicked
-  var calcbutton = document.getElementById("calc");
-        calcbutton.addEventListener("click", calculate);
-</script>
-
-
+            // --- Draw Charts (for screen only) ---
+            drawBarChart('#skills-chart-technical', skillsData.technical, '#6366f1');
+            drawBarChart('#skills-chart-coding', skillsData.coding, '#e11d48');
+        });
+    </script>
+</body>
 </html>
